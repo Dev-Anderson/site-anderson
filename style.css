@@ -1,0 +1,264 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "JetBrains Mono", monospace;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-variation-settings: 
+  "wight" 400;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  display: flex;
+  background-color: #1a1a1a;
+  color: #d0d0d0;
+  min-height: 100vh;
+}
+
+/* Sidebar Styling */
+.sidebar {
+  width: 280px;
+  background-color: #262626;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-right: 1px solid #333;
+}
+
+.profile-section {
+  text-align: center;
+}
+
+.avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: #e0e0e0;
+  margin: 0 auto 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar i {
+  font-size: 3.5rem;
+  color: #757575;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 70%;
+  object-fit: cover;
+}
+
+.profile-section h2 {
+  font-size: 1.2rem;
+  color: #ffffff;
+  letter-spacing: 1px;
+}
+
+.profile-section p {
+  font-size: 0.8rem;
+  color: #a0a0a0;
+  margin-top: 0.2rem;
+}
+
+.profile-section span {
+  font-size: 0.75rem;
+}
+
+/* Nav Menu */
+.nav-menu ul {
+  list-style: none;
+  margin-top: 1.5rem;
+}
+
+.nav-menu li {
+  margin-bottom: 1.2rem;
+}
+
+.nav-link {
+  color: #a0a0a0;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.05rem;
+  letter-spacing: 0.5px;
+  transition: color 0.3s;
+}
+
+.nav-link:hover, .nav-link.active {
+  color: #4a90e2;
+}
+
+/*Social Icons */ 
+.social-icons {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #808080;
+  font-size: 1.1rem;
+  margin-top: auto;
+  margin-bottom: 1.5rem;
+}
+
+.social-icons i {
+  color: #d85a38;
+}
+
+/* LinkedIn Button */
+.btn-linkedin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: #0077b5;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 0.7rem;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 0.95rem;
+}
+
+/* Main Content Styling */
+.content {
+  margin-left: 280px;
+  padding: 3rem;
+  width: calc(100% - 280px);
+}
+
+.section {
+  min-height: 50vh;
+  margin-bottom: 4rem;
+}
+
+.section p {
+    font-size: 1.1rem;
+}
+
+.main-title {
+  font-size: 1.6rem;
+  letter-spacing: 1px;
+  color: #3b71ca;
+  margin-bottom: 1.5rem;
+}
+
+.main-title.orange {
+  color: #e67e22;
+}
+
+.main-title.coral {
+  color: #e74c3c;
+}
+
+.sub-title {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.sub-title.orange {
+  color: #e67e22;
+}
+
+/* Lists */
+.line-numbered-list {
+  counter-reset: line-counter;
+  list-style: none;
+  margin-bottom: 2rem;
+}
+
+.line-numbered-list li {
+  counter-increment: line-counter;
+  position: relative;
+  padding-left: 2.5rem;
+  margin-bottom: 0.8rem;
+  line-height: 1.5;
+}
+
+.line-numbered-list li::before {
+  content: counter(line-counter);
+  position: absolute;
+  left: 0;
+  color: #757575;
+}
+
+.bullet-list {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+}
+
+.bullet-list li {
+  margin-bottom: 0.8rem;
+  line-height: 1.5;
+}
+
+/* Projects Section */
+.projects-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.project-card {
+  background-color: #2d2d2d;
+  border-radius: 8px;
+  padding: 1.2rem;
+  display: flex;
+  gap: 1.5rem;
+  border: 1px solid #3a3a3a;
+}
+
+.project-img-placeholder {
+  width: 140px;
+  height: 90px;
+  background-color: #555555;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.project-img-placeholder i {
+  font-size: 2rem;
+  color: #888888;
+}
+
+.project-info {
+  flex-grow: 1;
+}
+
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.project-header h3 {
+  color: #ffffff;
+  font-size: 1.1rem;
+}
+
+.icon-tag {
+  color: #e74c3c;
+  font-size: 1.2rem;
+}
+
+.project-info p {
+  font-size: 0.9rem;
+  color: #b0b0b0;
+  line-height: 1.4;
+}
