@@ -1,152 +1,662 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="dark">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Anderson da Silva | Gerente de Produto</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anderson Silva | Gerente de Produtos & Projetos Técnicos</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f7ff',
+                            100: '#e0effe',
+                            500: '#2563eb',
+                            600: '#1d4ed8',
+                            700: '#1e40af',
+                            900: '#0f172a',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #94a3b8;
+            border-radius: 4px;
+        }
+        .dark ::-webkit-scrollbar-thumb {
+            background: #334155;
+        }
+    </style>
 </head>
-<body>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 min-h-screen flex flex-col justify-between selection:bg-blue-500 selection:text-white">
 
-  <aside class="sidebar">
-    <div class="profile-section">
-      <div class="avatar">
-        <i class="fa-solid fa-user"><img src="anexos/eu.jfif" alt="Minha imagem"></i>
-      </div>
-      <h2>ANDERSON DA SILVA</h2>
-      <p>GERENTE DE PRODUTO E LÍDER DE EQUIPE<br><span>(ex: Programador)</span></p>
-    </div>
+    <!-- Header & Navigation -->
+    <header class="sticky top-0 z-40 backdrop-blur-md bg-white/80 dark:bg-slate-900/80 border-b border-slate-200 dark:border-slate-800 transition-colors duration-300">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            
+            <!-- Branding -->
+            <a href="#" class="flex items-center gap-2 group">
+                <div class="w-9 h-9 rounded-lg bg-blue-600 text-white flex items-center justify-center font-bold text-lg shadow-md group-hover:scale-105 transition-transform">
+                    AS
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-bold text-slate-900 dark:text-white leading-tight">Anderson Silva</span>
+                    <span class="text-xs text-slate-500 dark:text-slate-400 hidden sm:inline">Produtos & Projetos Técnicos</span>
+                </div>
+            </a>
 
-    <nav class="nav-menu">
-      <ul>
-        <li><a href="#experiencias" class="nav-link active">EXPERIÊNCIAS</a></li>
-        <li><a href="#realizacoes" class="nav-link">REALIZAÇÕES</a></li>
-        <li><a href="#projetos" class="nav-link">PROJETOS</a></li>
-        <li><a href="#blog" class="nav-link">BLOG</a></li>
-      </ul>
-    </nav>
+            <!-- Navigation Links -->
+            <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-600 dark:text-slate-300">
+                <a href="#about" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Sobre</a>
+                <a href="#skills" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Competências</a>
+                <a href="#experience" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Trajetória</a>
+                <a href="#blog" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Artigos</a>
+                <a href="#contact" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Contato</a>
+            </nav>
 
-    <div class="social-icons">
-       <!-- <i class="fa-brands fa-git-alt"></i>
-      <span>+</span>
-      <i class="fa-brands fa-github"></i>
-      <span>+</span>
-      <i class="fa-brands fa-gitlab"></i>  -->
-    </div>
+            <!-- Actions & Theme Toggle -->
+            <div class="flex items-center gap-3">
+                <!-- Social Links -->
+                <a href="https://www.linkedin.com/in/as-andersonsilva" target="_blank" rel="noopener noreferrer" 
+                   class="p-2 text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-all"
+                   title="LinkedIn">
+                    <i class="fab fa-linkedin text-lg"></i>
+                </a>
+                <a href="mailto:adersoosilvaa@gmail.com" 
+                   class="p-2 text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-all"
+                   title="E-mail">
+                    <i class="fas fa-envelope text-lg"></i>
+                </a>
 
-    <div class="sidebar-footer">
-      <a href="https://www.linkedin.com/in/as-andersonsilva" class="btn-linkedin" target="_blank">
-        LinkedIn 
-      </a>
-    </div>
-  </aside>
+                <div class="h-5 w-px bg-slate-300 dark:bg-slate-700 mx-1"></div>
 
-  <main class="content">
+                <!-- Theme Toggle Button -->
+                <button id="theme-toggle" type="button" 
+                        class="p-2 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-800 rounded-lg transition-colors flex items-center justify-center"
+                        aria-label="Alternar tema">
+                    <i id="theme-toggle-dark-icon" class="fas fa-moon text-lg hidden"></i>
+                    <i id="theme-toggle-light-icon" class="fas fa-sun text-lg text-amber-400 hidden"></i>
+                </button>
 
-    <!-- Seção Experiências -->
-    <section id="experiencias" class="section">
-        <br>
-        <br>
-        <h1>Eu sou o Anderson da Silva</h1>
-        <p>Líder de Produtos com mais de 10 anos de experiência acumulada na interseção entre Estratégia de Produto, Gestão de Projetos e Arquitetura de Software. Especialista na concepção e evolução de ecossistemas complexos nos segmentos de ERP, Fintechs (Meios de Pagamento) e Soluções Fiscais.
-Ao longo da minha trajetória, combinei visão de negócios e sólida bagagem técnica para liderar times multidisciplinares na entrega de produtos escaláveis e de alto impacto.</p>
-          <br>
-        <p>Principais Destaques e Cases de Impacto:</p><br>
-        <p>
-          <ul>
-            <li>Parcerias Estratégicas & Meios de Pagamento: Liderança da integração complexa de meios de pagamento entre TruckPag e DAF Caminhões, posicionando a solução como o meio de pagamento oficial da montadora.</li>
-            <li>Evolução de Módulo de Frota & Crédito: Gestão do backlog estratégico para manutenção de veículos pesados, automação de conciliação e conciliação bancária, além do gerenciamento do projeto de concessão de novo limite de crédito para abastecimento.</li>
-            <li>Escalabilidade & Plataformas de Larga Escala: Concepção e arquitetura de aplicação para monitoramento veicular de larga escala e alta performance, integrada a múltiplos órgãos governamentais.</li>
-            <li>Produtos Fiscais & Eficiência Operacional: Gestão da sustentação de softwares fiscais (NFe, NFCe, MDFe, Sped, CTe), criação de base de conhecimento estruturada para o mercado e desenvolvimento de APIs de alta usabilidade para ecossistemas de integração.</li>
-          </ul>
-        </p>
-        <br>
-      <h1 class="section-title main-title">[ EXPERIÊNCIAS PROFISSIONAIS ]</h1>
-        <br> 
-      <div class="section-body">
-
-        <h2 class="sub-title orange">ECOCENTAURO SISTEMAS > PRODUCT OWNER > LÍDER DE SQUAD > LÍDER DE SQUAD + PROGRAMADOR</h2>
-        <p>Na Ecocentauro Sistemas, atuei na intersecção entre gestão estratégica de produtos, liderança técnica e desenvolvimento de software. Como Squad Leader e Product Owner, liderei equipes multidisciplinares na modernização de sistemas legados para arquiteturas em Golang, garantindo eficiência operacional e redução de débitos técnicos. Fui responsável pelo ciclo completo de Discovery e Delivery de soluções operacionais e fiscais, traduzindo legislações complexas da SEFAZ (NFe, NFCe, CTe, SPED) em requisitos funcionais de alto impacto e conformidade regulatória.</p>
-        <br>
-        <ul class="line-numbered-list">
-          <li>Gestão de Time Multidisciplinar: Liderança direta de uma equipe composta por desenvolvedores, QAs, especialistas de Suporte e Analistas de Negócio, coordenando ritos, performance e o fluxo de entrega ponta a ponta.</li>
-          <li>Modernização e Liderança Técnica: Gestão de prioridades e transição de arquiteturas legadas para sistemas modernos em Golang, garantindo a estabilidade operacional e a redução de débitos técnicos.</li>
-          <li>Análise Técnica-Fiscal: Tradução de normas técnicas complexas em requisitos funcionais, assegurando a conformidade do sistema com legislações fiscais (NFe, NFCe, NFSe, MDFe, CTe, SPED, Receituário agronômico).</li>
-          <li>Gestão de Discovery e Delivery: Aplicação de frameworks ágeis (Scrum/Kanban) para conduzir o ciclo de vida do produto, desde a identificação de dores dos clientes até a entrega contínua de valor.</li>
-          <li>Inteligência Regulatória: Interpretação de normas técnicas complexas (NFe, CTe, SPED) e tradução em requisitos funcionais, assegurando a conformidade e a estabilidade dos sistemas.</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- Seção Realizações -->
-    <section id="realizacoes" class="section">
-      <h1 class="section-title main-title orange">[ PRINCIPAIS REALIZAÇÕES ]</h1>
-      <div class="section-body">
-        <ul class="bullet-list">
-          <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-          <li>Realizações mon an viann non voit punft onsare sao norita.</li>
-          <li>Lorem ipsum dolor sit amet, consectetur vist labore et dolore magna aliqua.</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- Seção Projetos -->
-    <section id="projetos" class="section">
-      <h1 class="section-title main-title coral">[ PROJETOS ]</h1>
-      <div class="projects-grid">
-
-        <div class="project-card">
-          <div class="project-img-placeholder">
-            <i class="fa-regular fa-image"></i>
-          </div>
-          <div class="project-info">
-            <div class="project-header">
-              <h3>[NOME DO PROJETO]</h3>
-              <i class="fa-solid fa-code icon-tag"></i>
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden p-2 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-800 rounded-lg">
+                    <i class="fas fa-bars text-lg"></i>
+                </button>
             </div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-          </div>
         </div>
 
-        <div class="project-card">
-          <div class="project-img-placeholder">
-            <i class="fa-regular fa-image"></i>
-          </div>
-          <div class="project-info">
-            <div class="project-header">
-              <h3>[NOME DO PROJETO]</h3>
-              <i class="fa-solid fa-mobile-screen-button icon-tag"></i>
-            </div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-          </div>
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 py-3 space-y-2">
+            <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800">Sobre</a>
+            <a href="#skills" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800">Competências</a>
+            <a href="#experience" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800">Trajetória</a>
+            <a href="#blog" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800">Artigos</a>
+            <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800">Contato</a>
         </div>
+    </header>
 
-        <div class="project-card">
-          <div class="project-img-placeholder">
-            <i class="fa-regular fa-image"></i>
-          </div>
-          <div class="project-info">
-            <div class="project-header">
-            <h3>[NOME DO PROJETO]</h3>
-              <i class="fa-solid fa-mobile-screen-button icon-tag"></i>
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-16 flex-grow">
+
+        <!-- Hero Section -->
+        <section class="py-10 md:py-16 flex flex-col md:flex-row items-center justify-between gap-10">
+            <div class="space-y-6 max-w-2xl">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-700 dark:bg-blue-950/80 dark:text-blue-300 border border-blue-200 dark:border-blue-800">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                    Cascavel, PR • Aberto a Oportunidades
+                </div>
+                <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight">
+                    Unindo <span class="text-blue-600 dark:text-blue-400">visão técnica</span> com estratégia de produtos de sucesso.
+                </h1>
+                <p class="text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
+                    Com mais de 10 anos de experiência comprovada em tecnologia, atuo na intersecção entre engenharia de software e gestão de produto, liderando iniciativas que trazem previsibilidade, escalabilidade e valor de negócio.
+                </p>
+                <div class="flex flex-wrap gap-4 pt-2">
+                    <a href="#contact" class="px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-medium shadow-lg shadow-blue-500/20 transition-all flex items-center gap-2">
+                        <i class="fas fa-paper-plane"></i> Entrar em Contato
+                    </a>
+                    <a href="https://www.linkedin.com/in/as-andersonsilva" target="_blank" rel="noopener noreferrer" 
+                       class="px-6 py-3 rounded-xl border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 font-medium transition-all flex items-center gap-2">
+                        <i class="fab fa-linkedin"></i> Ver LinkedIn
+                    </a>
+                </div>
             </div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-          </div>
+
+            <!-- Profile Highlight Card -->
+            <div class="w-full md:w-80 p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl relative overflow-hidden group">
+                <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-blue-500/10 rounded-full blur-2xl group-hover:bg-blue-500/20 transition-all"></div>
+                <div class="text-center space-y-4">
+                    <div class="w-24 h-24 mx-auto rounded-full bg-gradient-to-tr from-blue-600 to-indigo-500 flex items-center justify-center text-white text-3xl font-bold shadow-lg">
+                        AS
+                    </div>
+                    <div>
+                        <h2 class="text-xl font-bold text-slate-900 dark:text-white">Anderson Silva</h2>
+                        <!-- <p class="text-sm text-slate-500 dark:text-slate-400">Análise e Dev. de Sistemas</p> -->
+                         <p class="text-sm text-slate-500 dark:text-slate-400">Análise e Desenvolvimento de Sistemas</p>
+                    </div>
+                    <div class="pt-2 border-t border-slate-100 dark:border-slate-800 text-left space-y-2 text-xs text-slate-600 dark:text-slate-400">
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-bullseye text-blue-500 w-4"></i>
+                            <span>Gerente de Produtos / Product Owner</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-code text-blue-500 w-4"></i>
+                            <span>Desenvolvimento de Software</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-building text-blue-500 w-4"></i>
+                            <span>Aliare • TruckPag • Intelbras • Ecocentauro</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resumo Executivo / About & Stats -->
+        <section id="about" class="scroll-mt-20">
+            <div class="p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-8">
+                <div>
+                    <span class="text-xs font-semibold uppercase tracking-wider text-blue-600 dark:text-blue-400">Resumo Profissional</span>
+                    <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">Liderança orientada a resultados e previsibilidade</h2>
+                </div>
+
+                <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                    Profissional com sólida trajetória em gestão de projetos e produtos de software. Atuação estratégica facilitando o alinhamento entre negócio, produto e engenharia. Experiência recente como Gerente de Projetos na Aliare e Gerente de Produtos/PO na TruckPag, liderando iniciativas de alto impacto financeiro, integrações de APIs críticas (DAF, PIX) e modernização de arquiteturas fiscais e regulatórias.
+                </p>
+
+                <!-- Metrics Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2">
+                    <div class="p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/50 space-y-2">
+                        <div class="text-3xl font-extrabold text-blue-600 dark:text-blue-400">+10 Anos</div>
+                        <div class="text-sm font-medium text-slate-700 dark:text-slate-200">Experiência em TI</div>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">Liderando times multidisciplinares de software, QA e suporte.</p>
+                    </div>
+
+                    <div class="p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/50 space-y-2">
+                        <div class="text-3xl font-extrabold text-emerald-600 dark:text-emerald-400">35% → 65%</div>
+                        <div class="text-sm font-medium text-slate-700 dark:text-slate-200">Aumento de Entregas</div>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">Melhoria comprovada de fluxo de escopo e previsibilidade na Aliare.</p>
+                    </div>
+
+                    <div class="p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/50 space-y-2">
+                        <div class="text-3xl font-extrabold text-indigo-600 dark:text-indigo-400">+120% Est.</div>
+                        <div class="text-sm font-medium text-slate-700 dark:text-slate-200">Impacto Fintech</div>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">Crescimento de faturamento previsto via Integração DAF/Dealernet.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Principais Competências -->
+        <section id="skills" class="scroll-mt-20 space-y-6">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-2">
+                <div>
+                    <span class="text-xs font-semibold uppercase tracking-wider text-blue-600 dark:text-blue-400">Habilidades</span>
+                    <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">Principais Competências</h2>
+                </div>
+                <p class="text-sm text-slate-500 dark:text-slate-400">Domínio técnico aliado à gestão estratégica e de pessoas</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="p-5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-3">
+                    <div class="w-10 h-10 rounded-lg bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400 flex items-center justify-center">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
+                    <h3 class="font-semibold text-slate-900 dark:text-white">Gestão de Produto</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Ciclo completo (Discovery ao Delivery), Roadmap, gestão de backlog, user stories e critérios de aceite.</p>
+                </div>
+
+                <div class="p-5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-3">
+                    <div class="w-10 h-10 rounded-lg bg-emerald-100 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="font-semibold text-slate-900 dark:text-white">Projetos & Pessoas</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Liderança de times multidisciplinares, ritos 1:1, PDI, reuniões de kickoff e alinhamento de OKRs/KPIs.</p>
+                </div>
+
+                <div class="p-5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-3">
+                    <div class="w-10 h-10 rounded-lg bg-indigo-100 dark:bg-indigo-900/40 text-indigo-600 dark:text-indigo-400 flex items-center justify-center">
+                        <i class="fas fa-wallet"></i>
+                    </div>
+                    <h3 class="font-semibold text-slate-900 dark:text-white">Fintechs & APIs</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Meios de pagamento, conciliação bancária PIX, ecossistema de APIs REST, Webhooks e WebSockets.</p>
+                </div>
+
+                <div class="p-5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-3">
+                    <div class="w-10 h-10 rounded-lg bg-amber-100 dark:bg-amber-900/40 text-amber-600 dark:text-amber-400 flex items-center justify-center">
+                        <i class="fas fa-file-invoice"></i>
+                    </div>
+                    <h3 class="font-semibold text-slate-900 dark:text-white">Sistemas Fiscais</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Domínio regulatório SEFAZ (NFe, NFCe, NFSe, MDFe, CTe, SPED) e modernização de arquiteturas legadas.</p>
+                </div>
+            </div>
+
+            <!-- Tags List -->
+            <div class="flex flex-wrap gap-2 pt-2">
+                <span class="px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Scrum / Kanban / Híbrido</span>
+                <span class="px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Azure DevOps / MS Project / Jira</span>
+                <span class="px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Desenvolvimento Backend (Go / C#)</span>
+                <span class="px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300">SQL & NoSQL</span>
+                <span class="px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Indicadores de Performance</span>
+                <span class="px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Gestão de Stakeholders</span>
+                <span class="px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Gestão de Pessoas</span>
+            </div>
+        </section>
+
+        <!-- Trajetória Profissional Timeline -->
+        <section id="experience" class="scroll-mt-20 space-y-6">
+            <div>
+                <span class="text-xs font-semibold uppercase tracking-wider text-blue-600 dark:text-blue-400">Carreira</span>
+                <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">Trajetória Profissional</h2>
+            </div>
+
+            <div class="space-y-4">
+                <!-- Company Item 1 -->
+                <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col md:flex-row justify-between gap-4 hover:border-blue-500/50 transition-colors">
+                    <div class="space-y-2">
+                        <div class="flex items-center gap-3">
+                            <span class="px-2.5 py-1 rounded bg-blue-100 text-blue-700 dark:bg-blue-900/60 dark:text-blue-300 text-xs font-bold">Aliare</span>
+                            <h3 class="text-lg font-bold text-slate-900 dark:text-white">Gerente de Projetos</h3>
+                        </div>
+                        <p class="text-sm text-slate-600 dark:text-slate-300">Condução de iniciativas de tecnologia focadas em previsibilidade e organização. Alinhamento entre produto e desenvolvimento.</p>
+                        <div class="text-xs text-blue-600 dark:text-blue-400 font-medium">★ Destaque: Aumento da entrega dos projetos de 35% para mais de 65%.</div>
+                    </div>
+                    <div class="text-xs text-slate-500 dark:text-slate-400 shrink-0 md:text-right">
+                        Jul 2025 - Jun 2026<br>
+                        <span class="text-slate-400 dark:text-slate-500">1 ano</span>
+                    </div>
+                </div>
+
+                <!-- Company Item 2 -->
+                <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col md:flex-row justify-between gap-4 hover:border-blue-500/50 transition-colors">
+                    <div class="space-y-2">
+                        <div class="flex items-center gap-3">
+                            <span class="px-2.5 py-1 rounded bg-emerald-100 text-emerald-700 dark:bg-emerald-900/60 dark:text-emerald-300 text-xs font-bold">TruckPag</span>
+                            <h3 class="text-lg font-bold text-slate-900 dark:text-white">Gerente de Projetos / Product Manager / PO</h3>
+                        </div>
+                        <p class="text-sm text-slate-600 dark:text-slate-300">Gestão do ciclo completo de produto, liderança de time multidisciplinar (1:1s, PDI) e ecossistemas de integrações estratégicas de pagamentos.</p>
+                        <div class="text-xs text-emerald-600 dark:text-emerald-400 font-medium">★ Destaque: Integração DAF (Dealernet) e automação de conciliação bancária via PIX.</div>
+                    </div>
+                    <div class="text-xs text-slate-500 dark:text-slate-400 shrink-0 md:text-right">
+                        Nov 2023 - Jun 2025<br>
+                        <span class="text-slate-400 dark:text-slate-500">1 ano e 8 meses</span>
+                    </div>
+                </div>
+
+                <!-- Company Item 3 -->
+                <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col md:flex-row justify-between gap-4 hover:border-blue-500/50 transition-colors">
+                    <div class="space-y-2">
+                        <div class="flex items-center gap-3">
+                            <span class="px-2.5 py-1 rounded bg-indigo-100 text-indigo-700 dark:bg-indigo-900/60 dark:text-indigo-300 text-xs font-bold">Intelbras (CITEB)</span>
+                            <h3 class="text-lg font-bold text-slate-900 dark:text-white">Engenheiro de Software</h3>
+                        </div>
+                        <p class="text-sm text-slate-600 dark:text-slate-300">Construção de APIs distribuídas em Go e C#, WebSockets, processamento em tempo real de placas veiculares e bibliotecas internas.</p>
+                        <div class="text-xs text-indigo-600 dark:text-indigo-400 font-medium">★ Destaque: Criação de padronização de infraestrutura adotada por múltiplos times.</div>
+                    </div>
+                    <div class="text-xs text-slate-500 dark:text-slate-400 shrink-0 md:text-right">
+                        Nov 2022 - Abr 2024<br>
+                        <span class="text-slate-400 dark:text-slate-500">1 ano e 6 meses</span>
+                    </div>
+                </div>
+
+                <!-- Company Item 4 -->
+                <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col md:flex-row justify-between gap-4 hover:border-blue-500/50 transition-colors">
+                    <div class="space-y-2">
+                        <div class="flex items-center gap-3">
+                            <span class="px-2.5 py-1 rounded bg-amber-100 text-amber-700 dark:bg-amber-900/60 dark:text-amber-300 text-xs font-bold">Ecocentauro</span>
+                            <h3 class="text-lg font-bold text-slate-900 dark:text-white">Líder de Squad & Product Owner</h3>
+                        </div>
+                        <p class="text-sm text-slate-600 dark:text-slate-300">Gestão de backlog fiscal, tradução de normas SEFAZ, liderança de squads e desenvolvimento da primeira API REST em larga escala para documentos fiscais.</p>
+                        <div class="text-xs text-amber-600 dark:text-amber-400 font-medium">★ Destaque: Idealização e lançamento do portal fiscal.ecodfe.com.br e módulo CT-e.</div>
+                    </div>
+                    <div class="text-xs text-slate-500 dark:text-slate-400 shrink-0 md:text-right">
+                        Jun 2013 - Nov 2022<br>
+                        <span class="text-slate-400 dark:text-slate-500">9 anos e 6 meses</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Artigos & Insights (Blog Section) -->
+        <section id="blog" class="scroll-mt-20 space-y-6">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+                <div>
+                    <span class="text-xs font-semibold uppercase tracking-wider text-blue-600 dark:text-blue-400">Publicações & Insights</span>
+                    <h2 class="text-2xl font-bold text-slate-900 dark:text-white mt-1">Artigos sobre Produtos e Tecnologia</h2>
+                </div>
+
+                <!-- Blog Filters -->
+                <div class="flex flex-wrap gap-2" id="blog-filters">
+                    <button data-filter="all" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-medium bg-blue-600 text-white transition-all">Todos</button>
+                    <button data-filter="produto" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-300 transition-all">Gestão de Produto</button>
+                    <button data-filter="tecnologia" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-300 transition-all">Engenharia & APIs</button>
+                    <button data-filter="agil" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-300 transition-all">Métricas & Ágil</button>
+                </div>
+            </div>
+
+            <!-- Blog Posts Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="blog-posts-container">
+
+                <!-- Article 1 -->
+                <article data-category="produto agil" class="blog-card bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+                    <div class="p-6 space-y-3">
+                        <div class="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
+                            <span class="px-2 py-0.5 rounded bg-blue-100 text-blue-700 dark:bg-blue-950 dark:text-blue-300 font-semibold">Gestão de Produto</span>
+                            <span>5 min de leitura</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 dark:text-white leading-snug hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                            Como Aumentar a Entregabilidade de Sprints de 35% para 65%
+                        </h3>
+                        <p class="text-xs text-slate-600 dark:text-slate-400 line-clamp-3">
+                            Estratégias práticas de controle de escopo, alinhamento rigoroso de critérios de aceite e ritos de visibilidade para times de tecnologia.
+                        </p>
+                    </div>
+                    <div class="px-6 py-4 bg-slate-50 dark:bg-slate-800/40 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                        <span class="text-xs text-slate-400">14 Out, 2026</span>
+                        <button onclick="openModal('post-1')" class="text-xs font-semibold text-blue-600 dark:text-blue-400 hover:underline flex items-center gap-1">
+                            Ler artigo <i class="fas fa-arrow-right text-[10px]"></i>
+                        </button>
+                    </div>
+                </article>
+
+                <!-- Article 2 -->
+                <article data-category="tecnologia produto" class="blog-card bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+                    <div class="p-6 space-y-3">
+                        <div class="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
+                            <span class="px-2 py-0.5 rounded bg-indigo-100 text-indigo-700 dark:bg-indigo-950 dark:text-indigo-300 font-semibold">Engenharia & APIs</span>
+                            <span>7 min de leitura</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 dark:text-white leading-snug hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                            O Papel do Product Manager Técnico em Integrações Fintech
+                        </h3>
+                        <p class="text-xs text-slate-600 dark:text-slate-400 line-clamp-3">
+                            Do discovery à entrega de APIs financeiras críticas e conciliação PIX automatizada sem comprometer a estabilidade do ecossistema.
+                        </p>
+                    </div>
+                    <div class="px-6 py-4 bg-slate-50 dark:bg-slate-800/40 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                        <span class="text-xs text-slate-400">28 Set, 2026</span>
+                        <button onclick="openModal('post-2')" class="text-xs font-semibold text-blue-600 dark:text-blue-400 hover:underline flex items-center gap-1">
+                            Ler artigo <i class="fas fa-arrow-right text-[10px]"></i>
+                        </button>
+                    </div>
+                </article>
+
+                <!-- Article 3 -->
+                <article data-category="agil" class="blog-card bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+                    <div class="p-6 space-y-3">
+                        <div class="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
+                            <span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300 font-semibold">Métricas & Ágil</span>
+                            <span>4 min de leitura</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 dark:text-white leading-snug hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                            Utilizando Lead Time e Cycle Time para Otimizar Capacidade Produção
+                        </h3>
+                        <p class="text-xs text-slate-600 dark:text-slate-400 line-clamp-3">
+                            Como analisar métricas de fluxo de trabalho para identificar gargalos e garantir previsibilidade contínua de software.
+                        </p>
+                    </div>
+                    <div class="px-6 py-4 bg-slate-50 dark:bg-slate-800/40 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                        <span class="text-xs text-slate-400">10 Ago, 2026</span>
+                        <button onclick="openModal('post-3')" class="text-xs font-semibold text-blue-600 dark:text-blue-400 hover:underline flex items-center gap-1">
+                            Ler artigo <i class="fas fa-arrow-right text-[10px]"></i>
+                        </button>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="scroll-mt-20">
+            <div class="p-8 rounded-3xl bg-gradient-to-r from-blue-600 to-indigo-700 text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-8">
+                <div class="space-y-3 max-w-xl">
+                    <h2 class="text-2xl sm:text-3xl font-extrabold">Vamos conversar sobre o seu próximo projeto?</h2>
+                    <p class="text-blue-100 text-sm leading-relaxed">
+                        Estou disponível para posições de <strong>Gerente de Produtos</strong>, <strong>Technical Product Manager</strong> ou <strong>Product Owner</strong>.
+                    </p>
+                </div>
+
+                <div class="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
+                    <a href="mailto:adersoosilvaa@gmail.com" 
+                       class="px-6 py-3.5 rounded-xl bg-white text-blue-700 font-bold hover:bg-blue-50 transition-all text-center shadow-md flex items-center justify-center gap-2">
+                        <i class="fas fa-envelope"></i> adersoosilvaa@gmail.com
+                    </a>
+                    <a href="https://www.linkedin.com/in/as-andersonsilva" target="_blank" rel="noopener noreferrer" 
+                       class="px-6 py-3.5 rounded-xl bg-blue-800/60 border border-blue-400/30 text-white font-semibold hover:bg-blue-800 transition-all text-center flex items-center justify-center gap-2">
+                        <i class="fab fa-linkedin"></i> LinkedIn
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 transition-colors py-8">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 dark:text-slate-400">
+            <div>
+                © 2026 Anderson Silva. Cascavel, PR. Todos os direitos reservados.
+            </div>
+            <div class="flex items-center gap-4">
+                <span>Cascavel - PR</span>
+                <span>•</span>
+                <span>45 9 8826-1784</span>
+            </div>
         </div>
+    </footer>
 
-      </div>
-    </section>
+    <!-- Article Modal Container -->
+    <div id="modal-backdrop" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden opacity-0 transition-opacity duration-300 flex items-center justify-center p-4">
+        <div id="modal-content" class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl max-w-2xl w-full max-h-[85vh] overflow-y-auto p-6 sm:p-8 space-y-6 shadow-2xl transform scale-95 transition-transform duration-300">
+            <!-- Dynamic Modal Content Inserted via JS -->
+        </div>
+    </div>
 
-    <!-- Seção Blog -->
-    <section id="blog" class="section">
-      <h1 class="section-title main-title">[ BLOG ]</h1>
-      <div class="section-body">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet.</p>
-      </div>
-    </section>
+    <!-- Application Script -->
+    <script>
+        // --- Theme Toggle Logic ---
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const darkIcon = document.getElementById('theme-toggle-dark-icon');
+        const lightIcon = document.getElementById('theme-toggle-light-icon');
 
-  </main>
+        // Check stored theme or preferred color scheme
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            lightIcon.classList.remove('hidden');
+        } else {
+            document.documentElement.classList.remove('dark');
+            darkIcon.classList.remove('hidden');
+        }
 
-  <script src="script.js"></script>
+        themeToggleBtn.addEventListener('click', function() {
+            darkIcon.classList.toggle('hidden');
+            lightIcon.classList.toggle('hidden');
+
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('color-theme', 'light');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('color-theme', 'dark');
+            }
+        });
+
+        // --- Mobile Menu Toggle ---
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu on clicking link
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // --- Blog Filter Logic ---
+        const filterButtons = document.querySelectorAll('#blog-filters .filter-btn');
+        const blogCards = document.querySelectorAll('#blog-posts-container .blog-card');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Update active state of buttons
+                filterButtons.forEach(btn => {
+                    btn.classList.remove('bg-blue-600', 'text-white');
+                    btn.classList.add('bg-slate-200', 'dark:bg-slate-800', 'text-slate-700', 'dark:text-slate-300');
+                });
+                button.classList.remove('bg-slate-200', 'dark:bg-slate-800', 'text-slate-700', 'dark:text-slate-300');
+                button.classList.add('bg-blue-600', 'text-white');
+
+                const filter = button.getAttribute('data-filter');
+
+                blogCards.forEach(card => {
+                    if (filter === 'all' || card.getAttribute('data-category').includes(filter)) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // --- Modal Reader Logic ---
+        const articlesData = {
+            'post-1': {
+                title: 'Como Aumentar a Entregabilidade de Sprints de 35% para 65%',
+                category: 'Gestão de Produto & Projetos',
+                date: '14 de Outubro, 2026',
+                content: `
+                    <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
+                        Durante minha atuação na Aliare, um dos maiores desafios enfrentados pelo time de engenharia e produto era a previsibilidade das entregas. As sprints frequentemente encerravam com tarefas pendentes e alto índice de retrabalho.
+                    </p>
+                    <h4 class="text-lg font-bold text-slate-900 dark:text-white mb-2">1. Estruturação do Fluxo de Escopo</h4>
+                    <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
+                        Implementamos um novo rito de refinamento antes do planejamento das sprints. Nenhuma história entrava na sprint sem ter critérios de aceite rigorosamente definidos e validados previamente com as partes interessadas.
+                    </p>
+                    <h4 class="text-lg font-bold text-slate-900 dark:text-white mb-2">2. Transparência com Ritos de Controle</h4>
+                    <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
+                        Através da padronização de dashboards no Azure DevOps e status reports executivos, aumentamos a visibilidade do progresso em tempo real, permitindo identificar impedimentos precocemente e ajustar rotas antes do encerramento da sprint.
+                    </p>
+                    <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                        <strong>Resultado:</strong> A taxa de entrega das sprints saltou de 35% para mais de 65%, elevando significativamente a confiança da diretoria nos prazos acordados.
+                    </p>
+                `
+            },
+            'post-2': {
+                title: 'O Papel do Product Manager Técnico em Integrações Fintech',
+                category: 'Engenharia & APIs',
+                date: '28 de Setembro, 2026',
+                content: `
+                    <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
+                        Na TruckPag, liderei a integração estratégica DAF (Dealernet), tornando a empresa o meio de pagamento exclusivo para a rede de concessionárias DAF do Brasil.
+                    </p>
+                    <h4 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Unindo Visão de Negócio com Arquitetura de APIs</h4>
+                    <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
+                        O grande diferencial de um PM Técnico é conseguir dialogar com a equipe de desenvolvimento sobre resiliência de endpoints, conciliação de transações e tratamento de falhas em tempo real, mantendo simultaneamente o foco nos KPIs de receita e expansão de mercado.
+                    </p>
+                    <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                        A inclusão de conciliação bancária via PIX automatizado reduziu atritos operacionais e expandiu a carteira de clientes em 15%, prevendo aumento de até 120% no faturamento da linha.
+                    </p>
+                `
+            },
+            'post-3': {
+                title: 'Utilizando Lead Time e Cycle Time para Otimizar Capacidade',
+                category: 'Métricas & Ágil',
+                date: '10 de Agosto, 2026',
+                content: `
+                    <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
+                        Medir o desempenho do time não é sobre pressionar por entregas mais rápidas, mas sim identificar gargalos no fluxo de trabalho do software.
+                    </p>
+                    <h4 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Diferença na Prática</h4>
+                    <ul class="list-disc pl-5 text-slate-600 dark:text-slate-300 space-y-2 mb-4">
+                        <li><strong>Lead Time:</strong> Mede desde a criação da demanda até a chegada ao cliente.</li>
+                        <li><strong>Cycle Time:</strong> Mede a eficácia do time a partir do momento em que o trabalho ativo é iniciado.</li>
+                    </ul>
+                    <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                        Com o monitoramento contínuo dessas métricas, conseguimos reduzir retrabalhos operacionais e alinhar com precisão as expectativas de entregas aos stakeholders.
+                    </p>
+                `
+            }
+        };
+
+        const modalBackdrop = document.getElementById('modal-backdrop');
+        const modalContent = document.getElementById('modal-content');
+
+        function openModal(postId) {
+            const article = articlesData[postId];
+            if (!article) return;
+
+            modalContent.innerHTML = `
+                <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-4">
+                    <div>
+                        <span class="text-xs font-semibold text-blue-600 dark:text-blue-400 uppercase tracking-wider">${article.category}</span>
+                        <div class="text-xs text-slate-400 mt-0.5">${article.date}</div>
+                    </div>
+                    <button onclick="closeModal()" class="p-2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 rounded-lg">
+                        <i class="fas fa-times text-lg"></i>
+                    </button>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-4">${article.title}</h3>
+                    ${article.content}
+                </div>
+                <div class="pt-4 border-t border-slate-200 dark:border-slate-800 flex justify-end">
+                    <button onclick="closeModal()" class="px-5 py-2.5 bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 text-slate-800 dark:text-slate-200 rounded-xl text-sm font-semibold transition-colors">
+                        Fechar
+                    </button>
+                </div>
+            `;
+
+            modalBackdrop.classList.remove('hidden');
+            setTimeout(() => {
+                modalBackdrop.classList.remove('opacity-0');
+                modalContent.classList.remove('scale-95');
+                modalContent.classList.add('scale-100');
+            }, 10);
+        }
+
+        function closeModal() {
+            modalBackdrop.classList.add('opacity-0');
+            modalContent.classList.remove('scale-100');
+            modalContent.classList.add('scale-95');
+            setTimeout(() => {
+                modalBackdrop.classList.add('hidden');
+            }, 300);
+        }
+
+        // Close modal on click backdrop
+        modalBackdrop.addEventListener('click', (e) => {
+            if (e.target === modalBackdrop) closeModal();
+        });
+    </script>
 </body>
 </html>
