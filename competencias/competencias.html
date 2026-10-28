@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="h-full bg-slate-950 text-slate-100">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Senior PM Competency Heatmap & Obsidian Second Brain Hub</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="competencias.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+    body { font-family: 'Inter', sans-serif; }
+    code, pre, .font-mono { font-family: 'JetBrains Mono', monospace; }
+    .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
+    .custom-scrollbar::-webkit-scrollbar-track { background: #0f172a; }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #475569; }
+  </style>
+</head>
+<body class="h-full flex flex-col overflow-hidden bg-slate-950 text-slate-100">
+
+  <!-- Header -->
+  <header class="bg-slate-900 border-b border-slate-800 px-6 py-4 flex items-center justify-between shrink-0">
+    <div class="flex items-center gap-4">
+      <a href="../index.html" aria-label="Voltar para a página principal" title="Voltar para a página principal" class="shrink-0 px-3 py-2 text-xs font-semibold rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition flex items-center gap-2">
+        <i class="fa-solid fa-arrow-left"></i><span class="hidden sm:inline">Página principal</span>
+      </a>
+      <div class="h-10 w-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-violet-500 flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-indigo-500/20">
+        <i class="fa-solid fa-layer-group"></i>
+      </div>
+      <div>
+        <h1 class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-200 to-indigo-300">
+          <a href="../index.html" class="hover:text-indigo-500 dark:hover:text-indigo-400">Minhas competências como Gerente de Produtos</a>
+        </h1>
+        <p class="text-xs text-slate-400">Escala de Proficiência 0 a 5 • Mapeamento e Guia de Estudo</p>
+      </div>
+    </div>
+
+    <!-- Ações de manutenção disponíveis apenas no ambiente local -->
+    <div id="local-data-actions" class="items-center gap-2" style="display: none;">
+      <button onclick="exportData()" class="px-3.5 py-2 text-xs font-semibold rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition flex items-center gap-2">
+        <i class="fa-solid fa-download text-indigo-400"></i> Exportar JSON
+      </button>
+      <label class="px-3.5 py-2 text-xs font-semibold rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition cursor-pointer flex items-center gap-2">
+        <i class="fa-solid fa-upload text-violet-400"></i> Importar JSON
+        <input type="file" id="importFile" onchange="importData(event)" class="hidden" accept=".json">
+      </label>
+      <button onclick="resetData()" class="px-3.5 py-2 text-xs font-semibold rounded-lg bg-rose-950/40 hover:bg-rose-900/60 text-rose-300 border border-rose-800/60 transition flex items-center gap-2">
+        <i class="fa-solid fa-rotate-right"></i> Resetar
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <div class="flex-1 flex overflow-hidden">
+    
+    <!-- Sidebar / Global Analytics -->
+    <aside class="w-80 border-r border-slate-800 bg-slate-900/50 p-5 flex flex-col gap-6 overflow-y-auto custom-scrollbar shrink-0">
+      
+      <!-- Overall Score Card -->
+      <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 relative overflow-hidden shadow-sm">
+        <div class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">Maturidade Geral das Competências</div>
+        <div class="flex items-baseline gap-2">
+          <span id="overallScore" class="text-4xl font-black text-indigo-400">0.0</span>
+          <span class="text-sm font-semibold text-slate-500">/ 5.0</span>
+        </div>
+        <div class="w-full bg-slate-800 rounded-full h-2 mt-3 overflow-hidden">
+          <div id="overallProgressBar" class="bg-gradient-to-r from-indigo-500 to-violet-500 h-full rounded-full transition-all duration-500" style="width: 0%"></div>
+        </div>
+        <div id="maturityLabel" class="mt-3 text-xs font-medium text-slate-300 bg-slate-800/80 px-2.5 py-1 rounded-md inline-block">
+          Carregando nível...
+        </div>
+      </div>
+
+      <!-- Radar Chart -->
+      <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 flex flex-col gap-3">
+        <div class="text-xs font-semibold uppercase tracking-wider text-slate-400">Distribuição por Pilar</div>
+        <div class="relative w-full aspect-square">
+          <canvas id="radarChart"></canvas>
+        </div>
+      </div>
+
+      <!-- Level Scale Reference -->
+      <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 flex flex-col gap-3">
+        <div class="text-xs font-semibold uppercase tracking-wider text-slate-400 flex items-center justify-between">
+          <span>Régua de Avaliação (0-5)</span>
+          <i class="fa-solid fa-circle-info text-slate-500"></i>
+        </div>
+        <div class="space-y-2 text-xs">
+          <div class="flex items-center gap-2 text-slate-400"><span class="w-5 h-5 rounded bg-slate-800 text-slate-400 flex items-center justify-center font-bold text-[10px]">0</span> Nulo (Sem conhecimento)</div>
+          <div class="flex items-center gap-2 text-rose-300"><span class="w-5 h-5 rounded bg-rose-950 text-rose-400 border border-rose-800/50 flex items-center justify-center font-bold text-[10px]">1</span> Teórico (Apenas teoria)</div>
+          <div class="flex items-center gap-2 text-amber-300"><span class="w-5 h-5 rounded bg-amber-950 text-amber-400 border border-amber-800/50 flex items-center justify-center font-bold text-[10px]">2</span> Prático Iniciante (Sob supervisão)</div>
+          <div class="flex items-center gap-2 text-sky-300"><span class="w-5 h-5 rounded bg-sky-950 text-sky-400 border border-sky-800/50 flex items-center justify-center font-bold text-[10px]">3</span> Autônomo / Pleno (Executa sozinho)</div>
+          <div class="flex items-center gap-2 text-indigo-300"><span class="w-5 h-5 rounded bg-indigo-950 text-indigo-400 border border-indigo-800/50 flex items-center justify-center font-bold text-[10px]">4</span> Avançado / Sênior (Alta autonomia & negócio)</div>
+          <div class="flex items-center gap-2 text-emerald-300"><span class="w-5 h-5 rounded bg-emerald-950 text-emerald-400 border border-emerald-800/50 flex items-center justify-center font-bold text-[10px]">5</span> Referência / Mastery (Ensina e cria processos)</div>
+        </div>
+      </div>
+
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 flex flex-col overflow-hidden bg-slate-950">
+      
+      <!-- Filter and View Toolbar -->
+      <div class="p-4 bg-slate-900/30 border-b border-slate-800 flex items-center justify-between gap-4 shrink-0">
+        <div class="relative flex-1 max-w-md">
+          <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500 text-xs"></i>
+          <input type="text" id="searchInput" oninput="renderMatrix()" placeholder="Buscar competência ou palavra-chave (ex: OKRs, Pitch, APIs, SQL)..." class="w-full pl-9 pr-4 py-2 bg-slate-900 border border-slate-800 rounded-lg text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-indigo-500 transition">
+        </div>
+        <div class="flex items-center gap-2">
+          <button onclick="expandAll()" class="px-3 py-1.5 text-xs font-medium text-slate-400 hover:text-slate-200 bg-slate-900 border border-slate-800 rounded-lg hover:bg-slate-800 transition">Expandir Tudo</button>
+          <button onclick="collapseAll()" class="px-3 py-1.5 text-xs font-medium text-slate-400 hover:text-slate-200 bg-slate-900 border border-slate-800 rounded-lg hover:bg-slate-800 transition">Recolher Tudo</button>
+        </div>
+      </div>
+
+      <!-- Scrollable Matrix & Guides -->
+      <div id="matrixContainer" class="flex-1 overflow-y-auto p-6 space-y-6 custom-scrollbar">
+        <!-- Dynamic rendering via JavaScript -->
+      </div>
+    </main>
+
+  </div>
+
+  <!-- Obsidian Note Modal / Guide Inspection -->
+  <div id="guideModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-slate-900 border border-slate-800 rounded-2xl w-full max-w-2xl max-h-[85vh] flex flex-col overflow-hidden shadow-2xl">
+      <div class="p-5 border-b border-slate-800 flex items-center justify-between bg-slate-900/80">
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 flex items-center justify-center text-sm font-bold">
+            <i class="fa-solid fa-book-bookmark"></i>
+          </div>
+          <div>
+            <h3 id="modalTitle" class="text-sm font-bold text-slate-100">Guia de Estudo & Checklist Obsidian</h3>
+            <span id="modalCode" class="text-[10px] font-mono text-indigo-400 bg-indigo-950/50 px-2 py-0.5 rounded border border-indigo-800/40">1.1.1</span>
+          </div>
+        </div>
+        <button onclick="closeModal()" class="text-slate-500 hover:text-slate-300 p-1.5 rounded-lg hover:bg-slate-800 transition">
+          <i class="fa-solid fa-xmark text-lg"></i>
+        </button>
+      </div>
+
+      <div class="p-6 overflow-y-auto space-y-5 text-xs custom-scrollbar">
+        <!-- Obsidian Deep Link Header -->
+        <div class="bg-slate-950 border border-slate-800 rounded-xl p-4 flex items-center justify-between">
+          <div>
+            <div class="font-semibold text-slate-300">Link para Obsidian / Segundo Cérebro:</div>
+            <code id="modalObsidianTag" class="text-[11px] text-indigo-300 font-mono">[[1.1.1 - Conexão de OKRs Corporativos]]</code>
+          </div>
+          <button onclick="copyObsidianTag()" class="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg font-medium transition flex items-center gap-1.5 text-xs">
+            <i class="fa-regular fa-copy"></i> Copiar Link [[ ]]
+          </button>
+        </div>
+
+        <!-- Definition -->
+        <div>
+          <h4 class="text-slate-400 font-semibold uppercase tracking-wider text-[10px] mb-1.5">O que é a Competência?</h4>
+          <p id="modalDescription" class="text-slate-300 leading-relaxed bg-slate-950/50 p-3.5 rounded-xl border border-slate-800/80">
+            Descrição do tópico...
+          </p>
+        </div>
+
+        <!-- Study & Execution Checklist (0 to 5) -->
+        <div>
+          <h4 class="text-slate-400 font-semibold uppercase tracking-wider text-[10px] mb-2">Checklist de Estudos & Prática (EVOLUÇÃO 0 A 5)</h4>
+          <div id="modalChecklist" class="space-y-2">
+            <!-- Dynamic checklist -->
+          </div>
+        </div>
+
+        <!-- Personal Notes / Evidence Field -->
+        <div>
+          <h4 class="text-slate-400 font-semibold uppercase tracking-wider text-[10px] mb-1.5">Anotações Pessoais & Evidências Reais (Projetos)</h4>
+          <textarea id="modalNotesInput" onchange="saveModalNotes()" rows="3" placeholder="Insira referências de projetos reais (ex: Integração TruckPag x DealerNet, Microserviços Go), links de notas do Obsidian ou evidências de domínio..." class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-slate-200 placeholder-slate-600 focus:outline-none focus:border-indigo-500 transition"></textarea>
+        </div>
+      </div>
+
+      <div class="p-4 border-t border-slate-800 bg-slate-900/50 flex justify-end">
+        <button onclick="closeModal()" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-medium rounded-lg transition text-xs">
+          Fechar Guia
+        </button>
+      </div>
+    </div>
+  </div>
+  
+</body>
+</html>
